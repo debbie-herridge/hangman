@@ -33,3 +33,5 @@ Happy coding!
 
 
 https://stackoverflow.com/questions/594273/how-to-pick-a-random-english-word-from-a-list
+
+https://www.youtube.com/watch?v=m4nEnsavl6w&t=527s
