@@ -3,11 +3,12 @@ import random
 from words import words
 
 # Intro rules
+print('\n')
 print('Welcome to the Hangman game!\n')
 print('Rules:')
 print('you have 5 chances to guess the letters in the word,')
-print('each time you guess wrong you lose a limb..on the last try its game over.')
-print('Good luck and stay alive!\n')
+print('each time you guess wrong you lose a limb..on the')
+print('last try its game over. Good luck and stay alive!\n')
 
 # Get users name
 def get_user():
@@ -119,8 +120,11 @@ def win():
     ready_to_play()
 
 def ready_to_play():
-    if input('Ready to play? (Y/N): ').upper() == 'Y':
+    print('\n')
+    if input(f'So..{name} are you ready to play? (Y/N): ').upper() == 'Y':
         word = get_word()
         play(word)
+    else:
+        ready_to_play()
 
 ready_to_play()
