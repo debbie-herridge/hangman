@@ -5,6 +5,25 @@ from words import words
 # Intro rules
 print('\n')
 print('Welcome to the Hangman game!\n')
+print('\n')
+print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+print('@@@@@@@:::::::::::::::@@@@@@@@@@')
+print('@@@@@@@::@@@@@@@@@@@::@@@@@@@@@@')
+print('@@@@@@@::@@@@@@@@@@::::@@@@@@@@@')
+print('@@@@@@@::@@@@@@@@@@@::@@@@@@@@@@')
+print('@@@@@@@::@@@@@@@::::::::::@@@@@@')
+print('@@@@@@@::@@@@@@@@@@@::@@@@@@@@@@')
+print('@@@@@@@::@@@@@@@@@::@@::@@@@@@@@')
+print('@@@@@@@::@@@@@@@@@::@@::@@@@@@@@')
+print('@@@@@::::::@@@@@@@@@@@@@@@@@@@@@')
+print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+print('@::@@@::@::::::@::@@@@:::::@@@@@')
+print('@::@@@::@::@@@@@::@@@@::@@@::@@@')
+print('@:::::::@::::@@@::@@@@::@@@::@@@')
+print('@::@@@::@::@@@@@::@@@@:::::@@@@@')
+print('@::@@@::@::::::@:::::@::@@@@@@@@')
+print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+print('\n')
 print('Rules:')
 print('you have 5 chances to guess the letters in the word,')
 print('each time you guess wrong you lose a limb..on the')
@@ -99,11 +118,13 @@ def play(word):
         print('\n')
         print(f'Your word is: {full_word}')
 
+    # Direct user to win function if they guess correct
     if guessed:
         print('\n')
         print(f'Well done {name}, you survived!')
         win()
 
+# Losing image
 def rip():
     print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
@@ -119,6 +140,7 @@ def rip():
     print('\n')
     ready_to_play()
 
+# Winning image
 def win():
     print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
@@ -137,6 +159,7 @@ def win():
     print('\n')
     ready_to_play()
 
+# Loop to play game if user wants to continue
 def ready_to_play():
     print('\n')
     if input(f'So..{name} are you ready to play? (Y/N): ').upper() == 'Y':
