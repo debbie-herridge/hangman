@@ -63,7 +63,7 @@ def play(word):
         if len(guessed_words) >= 1:
             print(f'You have guessed: {guessed_words}')
         # Get users guess
-        guess = input('Choose a letter or word: ').upper()
+        guess = input('Choose a letter or word: \n').upper()
         print('\n')
         print('- - - - - - - - - - - - - - - - - - - - ')
         # Else/if statements if user chooses a letter
