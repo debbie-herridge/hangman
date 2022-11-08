@@ -26,8 +26,6 @@ def play(word):
     lives = 5
     guessed_letters = []
     guessed_words = []
-
-    # respond to user input 
     guessed = False
 
     while not guessed and lives > 0:
@@ -44,8 +42,9 @@ def play(word):
         if len(guessed_words) >= 1:
             print(f'You have guessed: {guessed_words}')
 
-        #get users letter guess
+        #get users guess
         guess = input('Choose a letter or word: ').upper()
+        # else/if statements if user chooses a letter
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("You've already tried this letter!")
@@ -63,7 +62,56 @@ def play(word):
                 full_word = "".join(listed_word)
                 if "_" not in full_word:
                     guessed = True
+        # else/if statements if user chooses a word
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print('This word was incorrect the first time you tried it...')
+            elif guess != word:
+                print(f'Nope, {guess} is wrong')
+                lives -= 1
+                guessed_words.append(guess)
+            else: 
+                guessed = True
+                full_word = word
+        # alternative input from user
+        else:
+            print('To survive requires a valid input...')
+    if guessed:
+        win()
+    else:
+        print(f'RIP...the word was {word}')
+        rip()
 
+def rip():
+    print('\n')
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    print('@@@: :: :@@@@@@@: :@@@@@@: :: :@@@@@')
+    print('@@: :@@@: :@@@@@: :@@@@@@: :@@@: :@@')
+    print('@@: :@@@: :@@@@@: :@@@@@@: :@@@: :@@')
+    print('@@: :@@@: :@@@@@: :@@@@@@: :@@@: :@@')
+    print('@@: :@: :@@@::@@: :@@::@@: :: :@@@@@')
+    print('@@: :@@: :@@@@@@: :@@@@@@: :@@@@@@@@')   
+    print('@@: :@@@: :@@@@@: :@@@@@@: :@@@@@@@@')
+    print('@@: :@@@: :@@@@@: :@@@@@@: :@@@@@@@@')
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    print('\n')
+
+def win():
+    print('\n')
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    print('@@@@@@@@@@: :: :: : :@@@@@@@@@@@')
+    print('@@@@@@@@::@@@@@@@@@@@::@@@@@@@@@')
+    print('@@@@@@::@@@@@@@@@@@@@@@::@@@@@@@')
+    print('@@@@::@@@@@@::@@@::@@@@@@::@@@@@')
+    print('@@@@::@@@@@@::@@@::@@@@@@::@@@@@')
+    print('@@@@::@@@@@@::@@@::@@@@@@::@@@@@')
+    print('@@@@::@@::@@@@@@@@@@@::@@::@@@@@')
+    print('@@@@::@@@@::@@@@@@@::@@@@::@@@@@')
+    print('@@@@@@::@@@:::::::::@@@@::@@@@@@')
+    print('@@@@@@@@::@@@@@@@@@@@::@@@@@@@@@')
+    print('@@@@@@@@@@: :: :: : :@@@@@@@@@@@')
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    print('\n')
 
 word = get_word()
 play(word)
