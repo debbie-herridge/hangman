@@ -15,47 +15,53 @@ def get_user():
     user_name = input('Before we begin, can I take your name? \n')
     return user_name
 
+# Store users name in variable
 name = get_user()
 
-# Get word from list
+# Get word from words.py file
 def get_word():
     word = random.choice(words)
     return word.upper()
 
 # Play game using random word generated 
 def play(word):
-
-    #game stats
+    # Game variables
     lives = 5
     guessed_letters = []
     guessed_words = []
     guessed = False
-
-    #display word
+    # Change chosen word for game
     full_word = '_' * len(word)
     print('\n')
     print(f'Your word is: {full_word}')
-
+    # Game loop while user has lives left
     while not guessed and lives > 0:
-        #display game stats
+        # Display game stats
+        print('\n')
         print(f'You have {lives} chances left')
         if len(guessed_letters) >= 1:
             print(f'You have guessed: {guessed_letters}')
         if len(guessed_words) >= 1:
             print(f'You have guessed: {guessed_words}')
-
-        #get users guess
+        # Get users guess
         guess = input('Choose a letter or word: ').upper()
-        # else/if statements if user chooses a letter
+        print('\n')
+        print('- - - - - - - - - - - - - - - - - - - - ')
+        # Else/if statements if user chooses a letter
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print('\n')
                 print("You've already tried this letter!")
             elif guess not in word:
-                print('\n')
-                print(f"Ouch {name}...you've lost a limb")
                 lives -= 1
                 guessed_letters.append(guess)
+                if lives > 0:
+                    print('\n')
+                    print(f"Ouch {name}...you've lost a limb")
+                else:
+                    print('\n')
+                    print(f'RIP {name}...the word was {word}')
+                    rip()
             else: 
                 guessed_letters.append(guess)
                 listed_word = list(full_word)
@@ -68,39 +74,38 @@ def play(word):
                 else:
                     print('\n')
                     print(f'Well done {name}...one step closer')
-        # else/if statements if user chooses a word
+        # Else/if statements if user chooses a word
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print('\n')
                 print('This word was incorrect the first time you tried it...')
             elif guess != word:
-                print('\n')
-                print(f'Nope, {guess} is wrong')
                 lives -= 1
                 guessed_words.append(guess)
+                if lives > 0:
+                    print('\n')
+                    print(f'Nope, {guess} is wrong')
+                else:
+                    print('\n')
+                    print(f'RIP {name}...the word was {word}')
+                    rip()
             else: 
                 guessed = True
                 full_word = word
-        # alternative input from user
+        # Alternative input from user
         else:
             print('\n')
             print('To survive requires a valid input...')
         print('\n')
-        print('- - - - - - - - - - - - - - - - - - - - ')
-        print('\n')
         print(f'Your word is: {full_word}')
-        print('\n')
 
     if guessed:
         print('\n')
         print(f'Well done {name}, you survived!')
         win()
-    else:
-        print('\n')
-        print(f'RIP {name}...the word was {word}')
-        rip()
 
 def rip():
+    print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@@: :: :@@@@@@@: :@@@@@@: :: :@@@@@')
     print('@@: :@@@: :@@@@@: :@@@@@@: :@@@: :@@')
@@ -115,6 +120,7 @@ def rip():
     ready_to_play()
 
 def win():
+    print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@@@@@@@@@: :: :: : :@@@@@@@@@@@')
     print('@@@@@@@@::@@@@@@@@@@@::@@@@@@@@@')
@@ -134,6 +140,8 @@ def win():
 def ready_to_play():
     print('\n')
     if input(f'So..{name} are you ready to play? (Y/N): ').upper() == 'Y':
+        print('\n')
+        print('- - - - - - - - - - - - - - - - - - - - ')
         word = get_word()
         play(word)
     else:
