@@ -31,13 +31,12 @@ def play(word):
     guessed_words = []
     guessed = False
 
-    while not guessed and lives > 0:
-        #display word
-        full_word = '_' * len(word)
-        print('\n')
-        print(f'Your word is: {full_word}')
-        print('\n')
+    #display word
+    full_word = '_' * len(word)
+    print('\n')
+    print(f'Your word is: {full_word}')
 
+    while not guessed and lives > 0:
         #display game stats
         print(f'You have {lives} chances left')
         if len(guessed_letters) >= 1:
@@ -50,13 +49,14 @@ def play(word):
         # else/if statements if user chooses a letter
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
+                print('\n')
                 print("You've already tried this letter!")
             elif guess not in word:
-                print(f"Oh dear {name}...you've lost a limb")
+                print('\n')
+                print(f"Ouch {name}...you've lost a limb")
                 lives -= 1
                 guessed_letters.append(guess)
             else: 
-                print(f'Well done {name}..one step closer to the word')
                 guessed_letters.append(guess)
                 listed_word = list(full_word)
                 checker = [i for i, letter in enumerate(word) if letter == guess]
@@ -65,11 +65,16 @@ def play(word):
                 full_word = "".join(listed_word)
                 if "_" not in full_word:
                     guessed = True
+                else:
+                    print('\n')
+                    print(f'Well done {name}...one step closer')
         # else/if statements if user chooses a word
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
+                print('\n')
                 print('This word was incorrect the first time you tried it...')
             elif guess != word:
+                print('\n')
                 print(f'Nope, {guess} is wrong')
                 lives -= 1
                 guessed_words.append(guess)
@@ -78,10 +83,17 @@ def play(word):
                 full_word = word
         # alternative input from user
         else:
+            print('\n')
             print('To survive requires a valid input...')
+        print('\n')
+        print('- - - - - - - - - - - - - - - - - - - - ')
+        print('\n')
+        print(f'Your word is: {full_word}')
+        print('\n')
+
     if guessed:
         print('\n')
-        print(f'Well done {name}!')
+        print(f'Well done {name}, you survived!')
         win()
     else:
         print('\n')
