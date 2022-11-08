@@ -22,27 +22,29 @@ def get_word():
 # Play game using random word generated 
 def play(word):
 
-    #display word
-    full_word = '_' * len(word)
-    print('\n')
-    print(f'Your word is: {full_word}')
-    print('\n')
-
     #game stats
     lives = 5
     guessed_letters = []
     guessed_words = []
 
-    print(f'You have {lives} chances left')
-    if len(guessed_letters) >= 1:
-        print(f'You have guessed: {guessed_letters}')
-    if len(guessed_words) >= 1:
-        print(f'You have guessed: {guessed_words}')
-
     # respond to user input 
     guessed = False
 
     while not guessed and lives > 0:
+        #display word
+        full_word = '_' * len(word)
+        print('\n')
+        print(f'Your word is: {full_word}')
+        print('\n')
+
+        #display game stats
+        print(f'You have {lives} chances left')
+        if len(guessed_letters) >= 1:
+            print(f'You have guessed: {guessed_letters}')
+        if len(guessed_words) >= 1:
+            print(f'You have guessed: {guessed_words}')
+
+        #get users letter guess
         guess = input('Choose a letter or word: ').upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
