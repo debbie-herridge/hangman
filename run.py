@@ -3,16 +3,18 @@ import random
 from words import words
 
 # Intro rules
-#print('Welcome to the Hangman game!\n')
-#print('Rules:')
-#print('you have 5 chances to guess the letters in the word,')
-#print('each time you guess wrong you lose a limb..on the last try its game over.')
-#print('Good luck and stay alive!\n')
+print('Welcome to the Hangman game!\n')
+print('Rules:')
+print('you have 5 chances to guess the letters in the word,')
+print('each time you guess wrong you lose a limb..on the last try its game over.')
+print('Good luck and stay alive!\n')
 
 # Get users name
-#def get_user():
-#    user_name = input('Before we begin, can I take your name? \n')
-#    return user_name
+def get_user():
+    user_name = input('Before we begin, can I take your name? \n')
+    return user_name
+
+name = get_user()
 
 # Get word from list
 def get_word():
@@ -49,11 +51,11 @@ def play(word):
             if guess in guessed_letters:
                 print("You've already tried this letter!")
             elif guess not in word:
-                print("Oh dear...you've lost a limb")
+                print(f"Oh dear {name}...you've lost a limb")
                 lives -= 1
                 guessed_letters.append(guess)
             else: 
-                print('Well done..one step closer to the word')
+                print(f'Well done {name}..one step closer to the word')
                 guessed_letters.append(guess)
                 listed_word = list(full_word)
                 checker = [i for i, letter in enumerate(word) if letter == guess]
@@ -77,13 +79,15 @@ def play(word):
         else:
             print('To survive requires a valid input...')
     if guessed:
+        print('\n')
+        print(f'Well done {name}!')
         win()
     else:
-        print(f'RIP...the word was {word}')
+        print('\n')
+        print(f'RIP {name}...the word was {word}')
         rip()
 
 def rip():
-    print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@@: :: :@@@@@@@: :@@@@@@: :: :@@@@@')
     print('@@: :@@@: :@@@@@: :@@@@@@: :@@@: :@@')
@@ -95,9 +99,9 @@ def rip():
     print('@@: :@@@: :@@@@@: :@@@@@@: :@@@@@@@@')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('\n')
+    ready_to_play()
 
 def win():
-    print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@@@@@@@@@: :: :: : :@@@@@@@@@@@')
     print('@@@@@@@@::@@@@@@@@@@@::@@@@@@@@@')
@@ -112,6 +116,11 @@ def win():
     print('@@@@@@@@@@: :: :: : :@@@@@@@@@@@')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('\n')
+    ready_to_play()
 
-word = get_word()
-play(word)
+def ready_to_play():
+    if input('Ready to play? (Y/N): ').upper() == 'Y':
+        word = get_word()
+        play(word)
+
+ready_to_play()
