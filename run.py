@@ -73,6 +73,7 @@ def play(word):
             print('You have guessed words:')
             print(', '.join(guessed_words))
         # Get users guess
+        print('Input exit if you get scared...')
         guess = input('Choose a letter or word: \n').upper()
         print('\n')
         print('- - - - - - - - - - - - - - - - - - - - ')
@@ -103,6 +104,12 @@ def play(word):
                 else:
                     print('\n')
                     print(f'Well done {name}...one step closer')
+        # If user types exit
+        elif guess == 'EXIT':
+            print('\n')
+            print('Scaredy pants...')
+            ready_to_play()
+            return
         # Else/if statements if user chooses a word
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
@@ -255,6 +262,7 @@ def ready_to_play():
         word = get_word()
         play(word)
     else:
+        print('\n')
         print("Ah, I see...come back when you're brave enough")
 
 ready_to_play()
