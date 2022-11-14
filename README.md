@@ -33,10 +33,21 @@ If the player loses a life they will be prompted with a message to say that they
 
 There is also a terminal image of said charater losing a limb each time for a visual representation, the more they guess wrong the more limbs the charater loses until game over.
 
+![player enters a correct answer](assets/images/correct-entry.png)
 ![player loses arm](assets/images/lose-limb.png)
+
+If the player wins they are given a smiley face with a prompt to play again.
+![player wins the round](assets/images/hangman-win.png)
+
+If the player dies in game they are given a RIP image, again with a prompt below to play again.
+![player dies](assets/images/hangman-rip.png)
 
 ### Input validation
 If the player guesses the same guess they will be prompted to guess again. Same applies to when the user guesses either a word not the same length as the chosen game word, or when they input something other than a letter.
+
+Or if the player inputs something other than Y/N when asked to commence the game an error will print out onto the terminal, if the player says 'n' they will have a goodbye message.
+
+![y/n input](assets/images/y-n-input.png)
 
 ### Game exit
 The player can input exit at any time to quit the current game, this can be used if the player want a different word, they will be prompted if they want to play again or quit entirely.
