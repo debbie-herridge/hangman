@@ -276,8 +276,11 @@ def ready_to_play():
         print('- - - - - - - - - - - - - - - - - - - - ')
         word = get_word()
         play(word)
-    else:
+    elif input == 'N':
         print('\n')
         print("Ah, I see...come back when you're brave enough")
+    else:
+        print('Y/N input only!')
+        ready_to_play()
 
 ready_to_play()
