@@ -58,7 +58,7 @@ def play(word):
     guessed_words = []
     guessed = False
     # Change chosen word for game
-    full_word = '_ ' * len(word)
+    full_word = '?' * len(word)
     print('\n')
     print(f'Your word is: {full_word}')
     # Game loop while user has lives left
@@ -91,6 +91,7 @@ def play(word):
                     print('\n')
                     print(f'RIP {name}...the word was {word}')
                     rip()
+                    break
             else:
                 guessed_letters.append(guess)
                 listed_word = list(full_word)
@@ -98,8 +99,9 @@ def play(word):
                 for index in checker:
                     listed_word[index] = guess
                 full_word = "".join(listed_word)
-                if "_" not in full_word:
+                if "?" not in full_word:
                     guessed = True
+                    break
                 else:
                     print('\n')
                     print(f'Well done {name}...one step closer')
@@ -124,9 +126,11 @@ def play(word):
                     print('\n')
                     print(f'RIP {name}...the word was {word}')
                     rip()
+                    break
             else:
                 guessed = True
                 full_word = word
+                break
         # Alternative input from user
         else:
             print('\n')
@@ -137,7 +141,7 @@ def play(word):
     # Direct user to win function if they guess correct
     if guessed:
         print('\n')
-        print(f'Well done {name}, you survived!')
+        print(f'Well done {name}, you survived! It was {full_word}')
         win()
 
 # Hangman lives
@@ -237,7 +241,6 @@ def rip():
     print('@@   @@@   @@@@@   @@@@@@   @@@@@@@@')
     print('@@   @@@   @@@@@   @@@@@@   @@@@@@@@')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-    print('\n')
     ready_to_play()
 
 # Winning image
@@ -260,7 +263,6 @@ def win():
     print('@@@@@@  @@@@@@@@@@@@@@@@   @@@@')
     print('@@@@@@@@               @@@@@@@@')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-    print('\n')
     ready_to_play()
 
 # Loop to play game if user wants to continue
