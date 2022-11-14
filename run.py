@@ -271,15 +271,17 @@ def ready_to_play():
     Asks user if they would like to play, calls on function to start game if yes
     """
     print('\n')
-    if input(f'So..{name} are you ready to play? (Y/N): ').upper() == 'Y':
+    play_game_input = input(f'So..{name} are you ready to play? (Y/N):').upper()
+    if play_game_input == 'Y':
         print('\n')
         print('- - - - - - - - - - - - - - - - - - - - ')
         word = get_word()
         play(word)
-    elif input == 'N':
+    elif play_game_input == 'N':
         print('\n')
         print("Ah, I see...come back when you're brave enough")
     else:
+        print('\n')
         print('Y/N input only!')
         ready_to_play()
 
