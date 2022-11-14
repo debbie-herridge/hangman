@@ -25,6 +25,9 @@ print('last try its game over. Good luck and stay alive!\n')
 
 # Get users name
 def get_user():
+    """
+    Get users name for a more personalised game
+    """
     user_name = input('Before we begin, can I take your name? \n')
     if user_name.isalpha():
         return user_name
@@ -38,11 +41,17 @@ name = get_user()
 
 # Get word from words.py file
 def get_word():
+    """
+    Get a random word from word.py file for game play
+    """
     word = random.choice(words)
     return word.upper()
 
-# Play game using random word generated 
+# Play game using random word generated
 def play(word):
+    """
+    Function to play the game
+    """
     # Game variables
     lives = 5
     guessed_letters = []
@@ -82,7 +91,7 @@ def play(word):
                     print('\n')
                     print(f'RIP {name}...the word was {word}')
                     rip()
-            else: 
+            else:
                 guessed_letters.append(guess)
                 listed_word = list(full_word)
                 checker = [i for i, letter in enumerate(word) if letter == guess]
@@ -109,7 +118,7 @@ def play(word):
                     print('\n')
                     print(f'RIP {name}...the word was {word}')
                     rip()
-            else: 
+            else:
                 guessed = True
                 full_word = word
         # Alternative input from user
@@ -127,8 +136,10 @@ def play(word):
         win()
 
 # Hangman lives
-
 def hangman(lives):
+    """
+    Response images to show users lives
+    """
     stages = [
         # Blank entry for the last life - replaced with win or lose image
         '',
@@ -173,7 +184,7 @@ def hangman(lives):
         @@@@   @@   @@@@
         @@@@@@@@@@@@@@@@
         """,
-        # Missing right arm 
+        # Missing right arm
         """
         @@@@@@@@@@@@@@@@
         @@@@@@@  @@@@@@@
@@ -193,6 +204,9 @@ def hangman(lives):
 
 # Losing image
 def rip():
+    """
+    RIP image for if a user loses the game
+    """
     print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@       @@@@@@@   @@@@@@        @@@')
@@ -200,7 +214,7 @@ def rip():
     print('@@   @@@   @@@@@   @@@@@@   @@@   @@')
     print('@@   @@@   @@@@@   @@@@@@   @@@  @@@')
     print('@@   @   @@@@@@@   @@@@@@       @@@@')
-    print('@@   @@   @@@@@@   @@@@@@   @@@@@@@@')   
+    print('@@   @@   @@@@@@   @@@@@@   @@@@@@@@')
     print('@@   @@@   @@@@@   @@@@@@   @@@@@@@@')
     print('@@   @@@   @@@@@   @@@@@@   @@@@@@@@')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
@@ -209,6 +223,9 @@ def rip():
 
 # Winning image
 def win():
+    """
+    Smiling image for if a user wins the game
+    """
     print('\n')
     print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     print('@@@@@@@@               @@@@@@@@')
@@ -228,6 +245,9 @@ def win():
 
 # Loop to play game if user wants to continue
 def ready_to_play():
+    """
+    Asks user if they would like to play, calls on function to start game if yes
+    """
     print('\n')
     if input(f'So..{name} are you ready to play? (Y/N): ').upper() == 'Y':
         print('\n')
@@ -235,6 +255,6 @@ def ready_to_play():
         word = get_word()
         play(word)
     else:
-        ready_to_play()
+        print("Ah, I see...come back when you're brave enough")
 
 ready_to_play()
