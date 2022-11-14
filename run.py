@@ -58,13 +58,12 @@ def play(word):
     guessed_words = []
     guessed = False
     # Change chosen word for game
-    full_word = '_' * len(word)
+    full_word = '_ ' * len(word)
     print('\n')
     print(f'Your word is: {full_word}')
     # Game loop while user has lives left
     while not guessed and lives > 0:
         # Display game stats
-        print('\n')
         print(f'You have {lives} chances left')
         if len(guessed_letters) >= 1:
             print('You have guessed letters:')
@@ -132,7 +131,6 @@ def play(word):
         else:
             print('\n')
             print('To survive requires a valid input...')
-        print('\n')
         print(f'Your word is: {full_word}')
         print(hangman(lives))
 
