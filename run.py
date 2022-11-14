@@ -19,7 +19,7 @@ print('@@@@@@@@@@@@@@@@')
 
 print('\n')
 print('Rules:')
-print('you have 5 chances to guess the letters in the word,')
+print('You have 5 chances to guess the word,')
 print('each time you guess wrong you lose a limb..on the')
 print('last try its game over. Good luck and stay alive!\n')
 
@@ -241,6 +241,7 @@ def win():
     print('@@  @@@@@@@@  @@@  @@@@@@@@  @@')
     print('@@  @@@@@@@@  @@@  @@@@@@@@  @@')
     print('@@  @@@@@@@@  @@@  @@@@@@@@  @@')
+    print('@@  @@@@@@@@@@@@@@@@@@@@@@@  @@')
     print('@@  @@@@  @@@@@@@@@@@  @@@@  @@')
     print('@@  @@@@@@  @@@@@@@   @@@@@  @@')
     print('@@@@  @@@@            @@@@  @@@')
