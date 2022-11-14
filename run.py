@@ -32,7 +32,12 @@ print('last try its game over. Good luck and stay alive!\n')
 # Get users name
 def get_user():
     user_name = input('Before we begin, can I take your name? \n')
-    return user_name
+    if user_name.isalpha():
+        return user_name
+    else:
+        print("Letters only...try again")
+        get_user()
+
 
 # Store users name in variable
 name = get_user()
@@ -59,9 +64,11 @@ def play(word):
         print('\n')
         print(f'You have {lives} chances left')
         if len(guessed_letters) >= 1:
-            print(f'You have guessed: {guessed_letters}')
+            print('You have guessed letters:')
+            print(', '.join(guessed_letters))
         if len(guessed_words) >= 1:
-            print(f'You have guessed: {guessed_words}')
+            print('You have guessed words:')
+            print(', '.join(guessed_words))
         # Get users guess
         guess = input('Choose a letter or word: \n').upper()
         print('\n')
