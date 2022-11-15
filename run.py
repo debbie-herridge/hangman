@@ -2,7 +2,7 @@
 import random
 from words import words
 
-# Intro rules
+# Intro and rules
 print('\n')
 print('Welcome to the Hangman game!\n')
 print('@@@@@@@@@@@@@@@@')
@@ -16,7 +16,6 @@ print('@@@@@  @@  @@@@@')
 print('@@@@@  @@  @@@@@')
 print('@@@@   @@   @@@@')
 print('@@@@@@@@@@@@@@@@')
-
 print('\n')
 print('Rules:')
 print('You have 5 chances to guess the word,')
@@ -57,7 +56,7 @@ def play(word):
     guessed_letters = []
     guessed_words = []
     guessed = False
-    # Change chosen word for game
+    # Change chosen word for game into '?'
     full_word = '?' * len(word)
     print('\n')
     print(f'Your word is: {full_word}')
@@ -137,14 +136,13 @@ def play(word):
             print('To survive requires a valid input...')
         print(f'Your word is: {full_word}')
         print(hangman(lives))
-
     # Direct user to win function if they guess correct
     if guessed:
         print('\n')
         print(f'Well done {name}, you survived! It was {full_word}')
         win()
-
-# Hangman lives
+    
+# Hangman lives images
 def hangman(lives):
     """
     Response images to show users lives
